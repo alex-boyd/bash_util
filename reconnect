@@ -1,0 +1,2 @@
+/etc/rc.d/netif stop
+/etc/rc.d/netif start

@@ -1,0 +1,13 @@
+#!/bin/sh
+while true; do
+    d="$(date)"
+    g=$(echo "$d" | grep -o "[0-9][0-9]\:[0-9][0-9]")
+    b=$(acpiconf -i 0 | grep "Remaining capacity" | grep -o "[0-9]\{1,3\}.")
+    c=$(acpiconf -i 0 | grep "State" | grep -o "discharging")
+    cc=""
+    if [ -z "${c}" ]; then
+        ${cc}="(+) "
+    fi
+    xsetroot -name "${b} ${cc}| ${g}" 
+    sleep 15
+done
